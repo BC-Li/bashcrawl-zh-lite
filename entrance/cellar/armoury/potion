@@ -13,30 +13,25 @@
 # We're happy to provide hints.
 #
 cat << EOF 
-You have found a potion bottle of swirling
-green liquid. Do you want to drink it?  y/n
+你发现了一个旋转着的绿色液体的药水瓶。你想喝它吗？  y/n
 
 EOF
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
    cat << EOF 
-The taste of a rustic green plant fills your mouth.  It
-warms and strengthens you.
+一种质朴的绿色植物的味道充满了你的嘴。 它温暖并增强了你的力量。
 
-Create a variable for your health points (HP).  You have
-15HP:
+为你的健康点数（HP）创建一个变量。 你有 15 HP。
 
 export HP=15
 
 EOF
 else
     cat << EOF
-You weren't born yestermorn.  This potion is probably
-poison.  
+你又不傻，怎么会相信这样的东西呢：这药水可能是毒药。 
 
-Create a variable for your health points (HP).  You have
-10HP:
+为你的健康点数（HP）创建一个变量。 你有 10 HP。
 
 export HP=10
 
@@ -45,7 +40,7 @@ EOF
 fi
 
 cat << EOF
-You can check your health at any time:
+你可以在任何时候检查你的健康状况。
 
 echo \$HP
 

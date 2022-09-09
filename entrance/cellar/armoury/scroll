@@ -1,21 +1,20 @@
 
-# You can interact with items in the room (they end with a *)
-# by running them as a command (a shell script).
+# 你可以与房间里的物品进行互动（它们以*结尾）。
+# 通过运行它们作为一个命令（一个shell脚本）。
 #
-# For example, to collect treasure:
+# 例如，要收集宝藏。
 #
 # ./treasure
 # 
-# The . (dot) means *don't move*, and the name of the 
-# script makes the code run.  This is known as a 
-# relative path, and the . means the current room
-# (directory).
+# .（点）表示*不要移动*，而脚本的名字 
+# 脚本使代码运行。 这被称为 
+# 相对路径, 而.表示当前房间
+# (目录).
 # 
-# You may have left treasure in the previous room.
-# Go back to a previous directory with two dots,
-# which means *take a step back*.
+# 你可能在前一个房间留下了宝藏。
+# 用两个点回到前一个目录。
+# 意思是*退一步*。
 #
-# EXAMPLE:
+# 举个例子。
 #
 # cd ..
-

@@ -12,47 +12,18 @@
 # the scrolls. If you're stuck, go to Gitlab and create an issue.
 # We're happy to provide hints.
 #
-damage() {
-    cat << EOF
-You try to resist, but you cannot.  You dip your hand into
-the fountain,  and you feel your skin burning.  The pain
-snaps you out of your trance and you only suffer -2 HP.
+cat << EOF
+一块白色的水晶，由冬之女王铸造，在冰冷的地面上。
 
-Remember to deduct 2 points from your HP variable:
+你可以在你的库存中加入这个物品的前缀。
 
-let "HP=HP-2"
+I=crystal,\$I
 
-EOF
+记住，你可以检查你的库存：
 
-}
-
-CURSE=`find .. -type f -name ".curse"`
-
-printf "Do you want to approach the fountain? y/n  "
-read RESP
-
-if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-    cat << EOF
-The waters sparkle in the light of your gaze.  You feel
-drawn to it.
+echo \$I
 
 EOF
-    if [ x$CURSE = "x" ]; then
-        cat << EOF
-But you suddenly feel strength to turn away.  You hear a
-sigh from the altar in the chapel.
-
-EOF
-   else
-       damage
-   fi
-else
-    if [ ! -z "$CURSE" ]; then
-	damage
-    fi
-fi
-
-[ -f ../.curse ] && rm ../.curse
 #
 #
 #

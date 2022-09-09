@@ -13,24 +13,24 @@
 # We're happy to provide hints.
 #
 cat << EOF
-There's a pile of old **rags**.  They are old and worn with
-age, and probably fell off of some poor adventurer.
+有一堆旧的破布。 它们是旧的，随着时间的推移而磨损。
+可能是从某个可怜的冒险家身上掉下来的。
 
 EOF
 
-printf "Do you want to take the rags? y/n  "
+printf "你想拿着破布吗？ y/n  "
 
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ];then
     cat << EOF
-As you take the rags from the floor, you find a salted fish,
-probably from the rations of the former owner of these rags.
-Prefix these items to your inventory:
+当你从地板上取下这些破布时，你发现了一条咸鱼。
+可能是这些破布的前主人的口粮。
+将这些物品固定在你的库存中：
 
 export I=rags,fish,\$I
 
-Remember, you can check your inventory"
+记住，你可以检查你的库存"
 
 echo \$I
 

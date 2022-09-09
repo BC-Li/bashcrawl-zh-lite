@@ -15,21 +15,19 @@
 echo
 if ! grep  --quiet --only-matching coins <<< $I; then
     cat << EOF
-You have found a stash of **coins**!  They are old and worn
-with age,  but they still gleam in the magickal light
-emanating from your eyes.
+你发现了一袋隐藏的金币!  它们已经老旧不堪，但它们在你眼中发出的魔力之光中仍然熠熠生辉。
 
-Prefix this item to your inventory:
+在你的库存中加入这个项目的前缀。
 
 export I=coins,\$I
 
-Remember, you can check your inventory:
+记住，你可以检查你的库存。
 
 echo \$I
 
 EOF
 else
-    echo "This treasure has already been taken."
+    echo "这个宝藏已经被拿走了。"
     echo
 fi
 

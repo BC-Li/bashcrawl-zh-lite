@@ -15,8 +15,7 @@
 
 gameover () {
     cat << EOF > corpse
-You see the corpse of a slain adventurer on the floor of the
-dungeon.  You find the following items on the corpse:  
+你看到一个被杀的冒险者的尸体在地牢的地板上。你在尸体上发现了以下物品。 
 
 $I
 
@@ -36,9 +35,9 @@ EOF
 # and this file has been renamed to 'pieces'
 if [ "$0" = "./pieces" ]; then
     cat << EOF
-You sift through the pieces of a shattered statue.
+你在一个破碎的雕像的碎片中进行筛选。
 
-You find nothing of interest in the statue's remains.
+你在雕像的残骸中没有发现任何有趣的东西。
 
 EOF
     exit 1
@@ -46,20 +45,20 @@ fi
 
 # start the statue encounter
 cat << EOF
-A rugged statue stands in the corner of the room.
+一个粗犷的雕像矗立在房间的角落。
 
 EOF
-printf "Do you approach it? y/n  "
+printf "接近它吗？ y/n  "
 
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
     cat << EOF
-The statue springs to life, rumbling:
+雕像涌现，隆隆作响。
 
-WHO DARES INTRUDE UPON THE CHAMBER OF SPIRITS?
+谁胆敢闯入灵魂之室？
 
-It thrusts a fist at you, hitting you for 5 damage.
+它向你挥舞着拳头，对你造成了5点伤害。
 
 EOF
 
@@ -68,9 +67,9 @@ EOF
     let "HP=HP-5"
     if [ "$HP" -le 0 ]; then
         cat << EOF
-You have been slain by the statue.
+你已经被雕像杀死了。
 
-GAME OVER!
+游戏结束!
 
 EOF
         gameover
@@ -78,27 +77,27 @@ EOF
     fi
 
     perl -pe 's/coins/diamonds/' -i ./treasure
-    printf "Do you have a sword? y/n  "
+    printf "你有剑吗？ y/n  "
     read RESP
     if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
        if grep  --quiet --only-matching 'sword' <<< $I; then
            cat <<EOF
-You strike the statue and it breaks to pieces!
+你击中了雕像，它被打成了碎片!
 
-However, you have taken damage.
-Deduct 5 from your HP variable:
+然而，你已经受到了伤害。
+从你的HP变量中减去5。
 
-let "HP=HP-5"
+让 "HP=HP-5"
 
 EOF
            mv statue pieces
        else
            cat << EOF
-No you don't!  Run!
-You have taken damage from the animated statue.
-Deduct 5 from your HP variable:
+不，你没有！ 快跑！
+你已经受到了动画雕像的伤害。
+从你的HP变量中减去5。
 
-let "HP=HP-5"
+让 "HP=HP-5"
 
 EOF
            rm treasure
@@ -106,18 +105,16 @@ EOF
       fi
     else
         cat <<EOF
-Run!
-You have taken damage from the animated statue.
-Deduct 5 from your HP variable:
+快跑！
+你已经受到了动画雕像的伤害。
+从你的HP变量中减去5。
 
-let "HP=HP-5"
-
+让 "HP=HP-5"
 EOF
    fi
 else
     cat << EOF
-You cautiously avoid the statue, recalling stories of living
-stone lying in wait, deep within haunted catacombs.
+你小心翼翼地避开雕像，回想着在闹鬼的地下墓穴深处，有活的石头在等待的故事。
 
 EOF
 

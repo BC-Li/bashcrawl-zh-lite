@@ -14,8 +14,7 @@
 #
 gameover () {
     cat << EOF > corpse
-You see the corpse of a slain adventurer on the floor of the
-dungeon.  You find the following items on the corpse: 
+你在地牢的地板上看到一个被杀的冒险者的尸体。 你在尸体上发现了以下物品。
 
 ${I}
 
@@ -49,16 +48,16 @@ roll() {
 resolve() {
     if ! grep  --quiet --only-matching 'sword' <<< $I; then
         cat << EOF
-You do not have a sword!
+你没有剑!
 
-Your attacks will be less effective.
+你的攻击将不太有效。
 
 EOF
         let NUM=NUM-10
     fi
     if [[ $MONSTER -eq $NUM ]]; then
         cat << EOF
-You each parry one another's attacks.  Roll again...
+你们各自抵挡对方的攻击。 再掷一次...
 
 EOF
 	roll
@@ -66,19 +65,19 @@ EOF
     
     if [[ $MONSTER -lt $NUM ]]; then
         cat << EOF
-A hit! A palpable hit!  You have slain the beast.
+一炮打响! 你杀死了那只野兽。
 
 EOF
         cat << EOF > treasure
 #!/bin/bash
 if ! grep  --quiet --only-matching crown <<< \$I; then
     cat << eof
-You have found a **crown**!  Add it to your inventory.
+你发现了一个皇冠!  把它加入你的库存。
 
 eof
 
 else
-    echo "This treasure has already been taken."
+    echo "这个宝藏已经被拿走了。"
 fi 
 
 EOF
@@ -87,19 +86,19 @@ EOF
     else
         cat << EOF
 
-Your attack is deflected off the monster's leathery flesh.
-You take 5 points damage. Deduct this from your HP.
+你的攻击被怪物的皮肉挡住了。
+你受到5点伤害。从你的HP中扣除这个。
 
-let HP=HP-5
+让 HP=HP-5
 
 EOF
         let HP=HP-5
         export HP
         if [ "$HP" -le 0 ]; then
             cat << EOF
-You have been slain by the monster.  
+你已经被怪物杀死了。 
 
-GAME OVER!
+游戏结束!
 
 EOF
             gameover
@@ -111,30 +110,28 @@ EOF
 
 if [ "$0" = "./carcass" ]; then
     cat << EOF
-You find the carcass of a foul beast.  Nothing of interest
-lies within its remains.
+你发现了一个肮脏的野兽的尸体。 在它的残骸中没有任何有趣的东西。
 
 EOF
     exit 0
 fi
 
 cat << EOF
-A hulking three-legged beast, with a mouth full of fangs and
-a barbed tail and 8 arms, lumbers toward you.
+一只笨重的三条腿的野兽，嘴里长满獠牙，尾巴上有倒刺，有8只手臂，向你蹒跚走来。
 
-If you have a sword, you can attack.  Otherwise, you should
-run.  
+如果你有一把剑，你可以攻击。 否则，你应该逃跑。 
+
+
 
 EOF
-printf "Do you want to attack? y/n  "
+printf "你要攻击吗？ y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ];then
     roll
 else
     cat << EOF
-You wisely turn and flee.  Quickly cd to the previous
-directory.
+你明智地转身逃走了。 迅速 cd 到上一个目录。
 
 EOF
 fi

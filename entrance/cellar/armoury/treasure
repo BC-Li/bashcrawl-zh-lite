@@ -13,16 +13,13 @@
 # We're happy to provide hints.
 # 
 cat << EOF
-You have found a gleaming silver **sword**!  You marvel at
-its craftsmanship, and you recall tales from your childhood
-of the great mystic king Rannismir who bore such a sword to
-protect the kingdom from the undead.
+你发现了一把闪闪发光的银剑!  你惊叹于它的工艺，你想起了你童年的故事，伟大的神秘国王Rannismir带着这样一把剑来保护王国不受亡灵侵扰。
 
-Add this item to your inventory:
+把这个物品添加到你的库存中：
 
 export I=sword,\$I
 
-Remember, you can check your inventory:
+记住，你可以检查你的库存：
 
 echo \$I
 

@@ -13,8 +13,8 @@
 # We're happy to provide hints.
 # 
 cat << EOF
-Runes, the language of the ancient mystics that once ruled
-this land, are inscribed upon the western wall.
+符文是古代神秘主义者的语言，曾经统治过这片土地。
+西面的墙上刻有符文，这是曾经统治这片土地的古代神秘主义者的语言。
 
 EOF
 printf "Do you want to read them? y/n  "
@@ -22,24 +22,21 @@ read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
     cat << EOF
-You recall the lessons of Caitlyn the Green, who taught you
-these ancient letters.  
+你回忆起绿色的凯特琳的课程，她教你
+这些古老的字母。 
 
-The runes are instructions on how to summon a portal that
-will allow you to walk through an invisible door contained
-in the wall.
+这些符文是关于如何召唤一个传送门的指示
+将允许你走过一扇包含在墙壁中的无形的门
+在墙上。
 
-In Bash, a symbolic link (symlink) is a *shortcut* to
-another file or directory.  Create one from this room to the
-adjacent one:
+在Bash中，符号链接（symbolic link）是通往另一个文件或目录的*快捷方式。 创建一个从这个房间到相邻房间的链接。
 
 ln -fs ../../../chapel/courtyard/aviary/hall portal
 
 EOF
 else
     cat << EOF
-You decide it is probably best to leave magickal
-inscriptions as they are.
+你决定也许最好让神奇的铭文保持原样。
 
 EOF
 

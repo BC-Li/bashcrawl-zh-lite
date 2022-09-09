@@ -11,50 +11,36 @@
 # When you're ready to continue playing the game, though, stick to
 # the scrolls. If you're stuck, go to Gitlab and create an issue.
 # We're happy to provide hints.
-# 
+#
 cat << EOF
-A metal box sits upon the ground.  It appears to be
-illuminated from within.  There is a window in the box. The
-window is black, but there is luminescent writing.
+角落里有一个腐朽的旧祭坛，是某个被遗忘的神。
+
+地上有一个小饰物。 它看起来具有宗教性质。
 
 EOF
-printf "Do you want to read the writing? y/n  "
+printf "你想把饰品放回祭坛上吗？ y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
     cat << EOF
-
-.--------------------------------,
-|       Welcome to POSIX         |
-|   Enter your username:         |
-'--------------------------------'
-EOF
-   read RESP
-
-   if [ "$RESP" = "$USER" ]; then
-       cat << EOF > armour
-#!/bin/bash
-cat << eof
-Welcome, ${USER}, to your POSIX system.  You have learnt much,
-and now you have the basic knowledge you need to become a
-truly powerful wizard.
-
-You have found magickal armour.  Add it to your inventory.
-
-eof
-touch .armour
-touch .bless
+你把这个饰品放在祭坛上。 你感觉到一股温柔的微风吹过房间。
 
 EOF
-        chmod +x armour
-        echo "You feel magic in the air."
-   fi
+    touch .bless
 else
-    cat << EOF
-The box is full of mystery, and it's often best not to look
-too deeply into puzzles.
+    printf "你想把这个饰品据为己有吗？ y/n  "
+    read RESP
+    if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
+        echo "记得把饰品加到你的库存中去!"
+        touch .curse
+    else
+        cat << EOF
+你把小饰品留在原地。 你感到了一种巨大的悲伤：不得不继续前进。
 
 EOF
+
+        touch .curse
+   fi
 fi
 
 
@@ -336,9 +322,10 @@ fi
 # it means they are applications.
 # Try this:
 #
-# ./box
+# ./altar
 #
 # If you're not seeing the * after
 # this file name, you're probably
 # forgetting to use ls -F 
+
 

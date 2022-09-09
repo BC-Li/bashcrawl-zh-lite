@@ -1,22 +1,22 @@
 
-# Illusions are strong here.
-# It is difficult to tell what is a doorway and what is an object.
+# 幻觉在这里很强烈。
+# 很难分辨什么是门（目录），什么是物体（文件）。
 #
-# The magic spell you use to look can be augmented.
+# 你用来寻找的魔法咒语可以被增强。
 #
-# From now on, cast your spell like this:
+# 从现在开始，你要像这样施法。
 # 
 # ls -F
 # 
-# Directories (the rooms of these catacombs) end with a / symbol.
+# 目录（这些墓穴的房间）以/符号结尾。
 # 
-# Encounters (programs) end with a * symbol.
+# 遭遇（程序）以*符号结尾。
 #
-# You can avoid having to type `ls -F` every time by running the
-# following:
+# 你可以通过运行以下程序来避免每次都要输入`ls -F`。
+# 以下。
 #
-# alias ls='ls -F'
+# 别名 ls='ls -F'
 #
-# This is known as a shell or command alias.  With this alias,
-# typing simply ls by itself will run ls -F. Try it out!
+# 这就是所谓的shell或命令别名。 使用这个别名,
+# 单独输入ls就可以运行ls -F。试试吧!
 #

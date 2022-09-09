@@ -15,24 +15,25 @@
 
 if ! grep  --only-matching amulet <<< $I &> /dev/null; then
     cat << EOF
-You have found an emerald **amulet**!"
+你找到了一个绿宝石护身符！"
 
-To collect treasure, you must have a variable to hold your inventory.
+为了收集宝藏，你必须有一个变量来存放你的库存。
 
-Create a variable and add your treasure to it like this:
+创建一个变量，像这样把你的财宝加入其中。
 
-export I=amulet,\$I
+export I=amulet,$I
 
-You can always check your wealth with this command:
+你可以随时用这个命令检查你的财富。
 
 echo \$I
+
 
 EOF
     mv ../.chapel ../chapel 2>/dev/null
     mv ../.vault ../vault 2>/dev/null
     mv ../.scrap ../scrap 2>/dev/null
 else
-    echo "This treasure has already been taken."
+    echo "这个宝藏被取走了。"
 fi
 
 
