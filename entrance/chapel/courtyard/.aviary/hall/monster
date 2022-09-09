@@ -72,7 +72,7 @@ EOF
 #!/bin/bash
 if ! grep  --quiet --only-matching crown <<< \$I; then
     cat << eof
-你发现了一个皇冠!  把它加入你的库存。
+你发现了一个皇冠(crown)!  把它加入你的库存。
 
 eof
 
