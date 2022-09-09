@@ -12,7 +12,8 @@
 # the scrolls. If you're stuck, go to Gitlab and create an issue.
 # We're happy to provide hints.
 # 
-cat << EOF
+if ! grep  --only-matching amulet <<< $I &> /dev/null; then
+    cat << EOF
 你发现了一把闪闪发光的银剑!  你惊叹于它的工艺，你想起了你童年的故事，伟大的神秘国王Rannismir带着这样一把剑来保护王国不受亡灵侵扰。
 
 把这个物品添加到你的库存中：
@@ -24,11 +25,12 @@ export I=sword,\$I
 echo \$I
 
 EOF
-mv ../../.chapel ../../chapel 2>/dev/null
-mv ../../.vault ../../vault 2>/dev/null
-mv ../../.scrap ../../scrap 2>/dev/null
-
-
+    mv ../.chapel ../chapel 2>/dev/null
+    mv ../.vault ../vault 2>/dev/null
+    mv ../.scrap ../scrap 2>/dev/null
+else
+    echo "宝藏已经被拿走了。"
+fi
 
 
 
