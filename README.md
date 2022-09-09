@@ -4,7 +4,9 @@ This is the Chinese translation version of [Bashcrawl](https://gitlab.com/slacke
 
 We assume the players have limited time, so the content is simplified. The original version is [here](https://gitlab.com/slackermedia/bashcrawl).
 
-# Welcome!
+In this game, our goal is to find the hidden monster and beat it, to find the final treasure and get it.
+
+## Welcome!
 
 This is a game to teach you the basics of using a POSIX (Linux, BSD, UNIX) terminal.
 
