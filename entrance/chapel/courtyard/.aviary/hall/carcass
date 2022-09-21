@@ -1,0 +1,544 @@
+#!/bin/bash
+#
+# If you are reading this, you have wandered out of bounds
+# and are reading the code that drives the game.
+#
+#                    Congratulations!
+#
+# Learning Linux is all about curiosity, so read this code and see
+# if you can figure out what it does.
+#
+# When you're ready to continue playing the game, though, stick to
+# the scrolls. If you're stuck, go to Gitlab and create an issue.
+# We're happy to provide hints.
+#
+gameover () {
+    cat << EOF > corpse
+你在地牢的地板上看到一个被杀的冒险者的尸体。 你在尸体上发现了以下物品。
+
+${I}
+
+EOF
+    curr=`basename $PWD`
+    while [ "$curr" != "entrance" ]; do
+        pushd .. &> /dev/null
+        dirs -c
+        curr=`basename $PWD`
+    done
+    unset I
+    unset HP
+    $SHELL
+}
+roll() {
+    printf "Enter a number:  "
+    read NUM
+    ALPHA=$RANDOM
+    OMEGA=$RANDOM
+    A=`echo $ALPHA | cut -b 1-2`
+    O=`echo $OMEGA | cut -b 1-2`
+    let "NUM=$ALPHA % $OMEGA"
+    MONSTER=$RANDOM
+    MONSTER=`echo $MONSTER | cut -b 1-2`
+    NUM=`echo $NUM | cut -b 1-2`
+    echo "The monster rolled " $MONSTER
+    echo "You rolled " $NUM
+    resolve
+}
+
+resolve() {
+    if ! grep  --quiet --only-matching 'sword' <<< $I; then
+        cat << EOF
+你没有剑!
+
+你的攻击将不太有效。
+
+EOF
+        let NUM=NUM-10
+    fi
+    if [[ $MONSTER -eq $NUM ]]; then
+        cat << EOF
+你们各自抵挡对方的攻击。 再掷一次...
+
+EOF
+	roll
+    fi
+    
+    if [[ $MONSTER -lt $NUM ]]; then
+        cat << EOF
+一炮打响! 你杀死了那只野兽。
+
+EOF
+        cat << EOF > treasure
+#!/bin/bash
+if ! grep  --quiet --only-matching crown <<< \$I; then
+    cat << eof
+你发现了一个皇冠!  把它加入你的库存。
+
+eof
+
+else
+    echo "这个宝藏已经被拿走了。"
+fi 
+
+EOF
+        chmod +x treasure
+        mv monster carcass
+    else
+        cat << EOF
+
+你的攻击被怪物的皮肉挡住了。
+你受到5点伤害。从你的HP中扣除这个。
+
+让 HP=HP-5
+
+EOF
+        let HP=HP-5
+        export HP
+        if [ "$HP" -le 0 ]; then
+            cat << EOF
+你已经被怪物杀死了。 
+
+游戏结束!
+
+EOF
+            gameover
+            exit 1
+        fi
+	roll
+    fi
+}
+
+if [ "$0" = "./carcass" ]; then
+    cat << EOF
+你发现了一个肮脏的野兽的尸体。 在它的残骸中没有任何有趣的东西。
+
+EOF
+    exit 0
+fi
+
+cat << EOF
+一只笨重的三条腿的野兽，嘴里长满獠牙，尾巴上有倒刺，有8只手臂，向你蹒跚走来。
+
+如果你有一把剑，你可以攻击。 否则，你应该逃跑。 
+
+
+
+EOF
+printf "你要攻击吗？ y/n  "
+read RESP
+
+if [ "$RESP" = "y" -o "$RESP" = "Y" ];then
+    roll
+else
+    cat << EOF
+你明智地转身逃走了。 迅速 cd 到上一个目录。
+
+EOF
+fi
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+##
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+#
+# Well that didn't work!
